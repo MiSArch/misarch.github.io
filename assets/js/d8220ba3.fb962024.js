@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[16619],{86983:e=>{e.exports=JSON.parse('{"title":"Api overview","slug":"/category/api-2","permalink":"/docs/category/api-2","navigation":{"previous":{"title":"Discount Service GraphQL API","permalink":"/docs/graphql/discount"},"next":{"title":"Directives","permalink":"/docs/category/directives-4"}}}')}}]);

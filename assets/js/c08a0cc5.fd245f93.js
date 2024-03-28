@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[68532],{90942:e=>{e.exports=JSON.parse('{"title":"Directives overview","slug":"/category/directives","permalink":"/docs/category/directives","navigation":{"previous":{"title":"Api","permalink":"/docs/category/api"},"next":{"title":"include","permalink":"/docs/graphql/address/api/directives/include"}}}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[89068],{8877:e=>{e.exports=JSON.parse('{"title":"Types overview","slug":"/category/types-9","permalink":"/docs/category/types-9","navigation":{"previous":{"title":"Tax Service GraphQL API","permalink":"/docs/graphql/tax"},"next":{"title":"Directives","permalink":"/docs/category/directives-19"}}}')}}]);

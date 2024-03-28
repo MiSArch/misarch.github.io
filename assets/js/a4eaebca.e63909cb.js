@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[71739],{4274:e=>{e.exports=JSON.parse('{"title":"Unions overview","slug":"/category/unions-9","permalink":"/docs/category/unions-9","navigation":{"previous":{"title":"UUID","permalink":"/docs/graphql/tax/types/scalars/uuid"},"next":{"title":"_Entity","permalink":"/docs/graphql/tax/types/unions/entity"}}}')}}]);

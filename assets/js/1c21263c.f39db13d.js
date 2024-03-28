@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[90563],{79287:a=>{a.exports=JSON.parse('{"title":"Installation","description":"How to install it","slug":"/category/installation","permalink":"/docs/category/installation","navigation":{"next":{"title":"Making keycloak production ready","permalink":"/docs/docs/install-manuals/publishing-keycloak"}}}')}}]);
