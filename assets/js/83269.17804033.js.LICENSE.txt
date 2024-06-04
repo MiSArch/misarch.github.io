@@ -1,0 +1,4 @@
+/*!
+  * PhotoSwipe Lightbox 5.4.3 - https://photoswipe.com
+  * (c) 2023 Dmytro Semenov
+  */
