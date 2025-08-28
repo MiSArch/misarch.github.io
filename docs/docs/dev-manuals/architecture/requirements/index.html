@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-docs/dev-manuals/architecture/requirements" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.3.2">
+<title data-rh="true">Requirements | MiSArch</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://misarch.github.io/docs/docs/dev-manuals/architecture/requirements"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Requirements | MiSArch"><meta data-rh="true" name="description" content="Although we are no longer in the requirements engineering phase, this document may still change in the near future."><meta data-rh="true" property="og:description" content="Although we are no longer in the requirements engineering phase, this document may still change in the near future."><link data-rh="true" rel="icon" href="/icons/misarch-logo.svg"><link data-rh="true" rel="canonical" href="https://misarch.github.io/docs/docs/dev-manuals/architecture/requirements"><link data-rh="true" rel="alternate" href="https://misarch.github.io/docs/docs/dev-manuals/architecture/requirements" hreflang="en"><link data-rh="true" rel="alternate" href="https://misarch.github.io/docs/docs/dev-manuals/architecture/requirements" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.38aa692a.css">
+<script src="/assets/js/runtime~main.8daa9574.js" defer="defer"></script>
+<script src="/assets/js/main.35c3e160.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/icons/misarch-logo.svg" alt="" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/icons/misarch-logo-dark.svg" alt="" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">MiSArch</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/">Docs</a><a class="navbar__item navbar__link" href="/docs/graphql/schema">GraphQL</a><a class="navbar__item navbar__link" href="/docs/graphql/address">GraphQL (services)</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/MiSArch" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/">Project Overview</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/docs/category/installation">Installation</a><button aria-label="Expand sidebar category &#x27;Installation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/docs/category/usage">Usage</a><button aria-label="Expand sidebar category &#x27;Usage&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/docs/category/development">Development</a><button aria-label="Collapse sidebar category &#x27;Development&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/docs/category/architecture">Architecture</a><button aria-label="Collapse sidebar category &#x27;Architecture&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/docs/dev-manuals/architecture/domain-model">Domain Model</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/docs/dev-manuals/architecture/requirements">Requirements</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/docs/dev-manuals/architecture/business-processes">Busines Processes</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/docs/dev-manuals/architecture/experiment-configuration">experiment-configuration</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/docs/dev-manuals/architecture/domain-tradeoff-analysis">Domain Tradeoff Analysis</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/docs/dev-manuals/architecture/component-diagram">Component Diagram</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/docs/dev-manuals/architecture/user-journeys">User Journeys</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/docs/dev-manuals/architecture/health-endpoints">Health endpoint</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/docs/category/domain-services--system-components">Domain Services &amp; System Components</a><button aria-label="Expand sidebar category &#x27;Domain Services &amp; System Components&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/docs/category/infrastructure-experiments--others">Infrastructure, Experiments &amp; Others</a><button aria-label="Expand sidebar category &#x27;Infrastructure, Experiments &amp; Others&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/docs/category/adrs">ADRs</a><button aria-label="Expand sidebar category &#x27;ADRs&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/docs/category/tooling">Tooling</a><button aria-label="Expand sidebar category &#x27;Tooling&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/docs/category/kubernetes">Kubernetes</a><button aria-label="Expand sidebar category &#x27;Kubernetes&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/docs/category/development"><span itemprop="name">Development</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/docs/category/architecture"><span itemprop="name">Architecture</span></a><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Requirements</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>Requirements</h1>
+<div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>caution</div><div class="admonitionContent_BuS1"><p>Although we are no longer in the requirements engineering phase, this document may still change in the near future.</p></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="to-do-list-and-open-questions-re-this-document">To-do List and Open Questions RE this document<a href="#to-do-list-and-open-questions-re-this-document" class="hash-link" aria-label="Direct link to To-do List and Open Questions RE this document" title="Direct link to To-do List and Open Questions RE this document">​</a></h2>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Go through the requirements after having prioritized them and adjust the usage of &quot;should&quot; and &quot;must&quot; to better reflect the requirement&#x27;s importance.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="re-wording-in-this-document">RE Wording in this Document<a href="#re-wording-in-this-document" class="hash-link" aria-label="Direct link to RE Wording in this Document" title="Direct link to RE Wording in this Document">​</a></h2>
+<ul>
+<li>We use <em>Microservice</em> and <em>Service</em> interchangeably.</li>
+<li>We use <em>Reference Architecture</em> and <em>System</em> interchangeably.</li>
+<li>RA = reference architecture</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="stakeholders">Stakeholders<a href="#stakeholders" class="hash-link" aria-label="Direct link to Stakeholders" title="Direct link to Stakeholders">​</a></h2>
+<ul>
+<li>Examiner</li>
+<li>Supervisors</li>
+<li>Developers</li>
+<li>Researchers:<!-- -->
+<ul>
+<li>Researcher <em>Toni</em></li>
+<li>Researcher <em>Goliath</em></li>
+</ul>
+</li>
+<li><em>Ulm</em> -- a collective of experienced users of similar systems; they do metric based performance experiments and regularly have to adapt the underlying reference architecture</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="requirement-categories">Requirement Categories<a href="#requirement-categories" class="hash-link" aria-label="Direct link to Requirement Categories" title="Direct link to Requirement Categories">​</a></h2>
+<ul>
+<li>Constraints</li>
+<li>Process<!-- -->
+<ul>
+<li>EnPro -- The project itself</li>
+<li>Software Artefacts</li>
+</ul>
+</li>
+<li>Product<!-- -->
+<ul>
+<li>Domain</li>
+<li>Usability</li>
+<li>Non-functional Requirements &amp; Quality Attributes</li>
+<li>Performance</li>
+<li>Configurations</li>
+</ul>
+</li>
+<li>Design<!-- -->
+<ul>
+<li>Architecture</li>
+<li>Microservice Patterns</li>
+<li>Loose Coupling</li>
+<li>Technologies</li>
+<li>Deployment</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="constraints">Constraints<a href="#constraints" class="hash-link" aria-label="Direct link to Constraints" title="Direct link to Constraints">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="r-c-001-no-external-services">R-C-001: No external services<a href="#r-c-001-no-external-services" class="hash-link" aria-label="Direct link to R-C-001: No external services" title="Direct link to R-C-001: No external services">​</a></h3>
+<ul>
+<li>The system must not depend on external services.</li>
+<li>Origin: Supervisors, Examiner</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="r-c-002-free-of-charge">R-C-002: Free of charge<a href="#r-c-002-free-of-charge" class="hash-link" aria-label="Direct link to R-C-002: Free of charge" title="Direct link to R-C-002: Free of charge">​</a></h3>
+<ul>
+<li>The use of the system must be free of charge.</li>
+<li>Also, the deployment of the system must be free of charge.</li>
+<li>Origin: Researcher</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="process">Process<a href="#process" class="hash-link" aria-label="Direct link to Process" title="Direct link to Process">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="enpro-requirements">EnPro Requirements<a href="#enpro-requirements" class="hash-link" aria-label="Direct link to EnPro Requirements" title="Direct link to EnPro Requirements">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-e-001-at-least-15-microservices">R-E-001: At least 15 Microservices<a href="#r-e-001-at-least-15-microservices" class="hash-link" aria-label="Direct link to R-E-001: At least 15 Microservices" title="Direct link to R-E-001: At least 15 Microservices">​</a></h4>
+<ul>
+<li>The RA must consist of at least 15 microservices.</li>
+<li>Origin: Examiner, Supervisors</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-e-002-microservice-patterns">R-E-002: Microservice Patterns<a href="#r-e-002-microservice-patterns" class="hash-link" aria-label="Direct link to R-E-002: Microservice Patterns" title="Direct link to R-E-002: Microservice Patterns">​</a></h4>
+<ul>
+<li>Microservice patterns must be used and well documented.</li>
+<li>Origin: Examiner, Supervisors</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-e-003-different-programming-languages">R-E-003: Different programming languages<a href="#r-e-003-different-programming-languages" class="hash-link" aria-label="Direct link to R-E-003: Different programming languages" title="Direct link to R-E-003: Different programming languages">​</a></h4>
+<ul>
+<li>
+<p>Different programming languages must be used for the system&#x27;s implementation.</p>
+</li>
+<li>
+<p>Python should only be considered as a last resort.</p>
+<ul>
+<li>If Python was used, an explanation would be needed.</li>
+</ul>
+</li>
+<li>
+<p>Java should be part of the mix. -- Researcher <em>Goliath</em></p>
+</li>
+<li>
+<p>See R-T-003, R-T-009, and R-T-002</p>
+</li>
+<li>
+<p>Origin: Examiner, Researcher <em>Goliath</em></p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="software-artefacts">Software Artefacts<a href="#software-artefacts" class="hash-link" aria-label="Direct link to Software Artefacts" title="Direct link to Software Artefacts">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-sart-001-documentation">R-SArt-001: Documentation<a href="#r-sart-001-documentation" class="hash-link" aria-label="Direct link to R-SArt-001: Documentation" title="Direct link to R-SArt-001: Documentation">​</a></h4>
+<ul>
+<li>The system must be well documented.</li>
+<li>The software architecture of the system must be well documented.</li>
+<li>Design decisions must be documented using Architectural Design Records (ADRs).<!-- -->
+<ul>
+<li><a href="https://adr.github.io" target="_blank" rel="noopener noreferrer">https://adr.github.io</a></li>
+<li><a href="https://github.com/joelparkerhenderson/architecture-decision-record" target="_blank" rel="noopener noreferrer">https://github.com/joelparkerhenderson/architecture-decision-record</a></li>
+<li><a href="https://adr.github.io/madr/" target="_blank" rel="noopener noreferrer">https://adr.github.io/madr/</a></li>
+</ul>
+</li>
+<li>The endpoints of the system must be clearly and comprehensively documented.</li>
+<li>See R-U-019</li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-sart-002-clean-code">R-SArt-002: Clean code<a href="#r-sart-002-clean-code" class="hash-link" aria-label="Direct link to R-SArt-002: Clean code" title="Direct link to R-SArt-002: Clean code">​</a></h4>
+<ul>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-sart-003-clean-and-simple-deployment">R-SArt-003: Clean and simple deployment<a href="#r-sart-003-clean-and-simple-deployment" class="hash-link" aria-label="Direct link to R-SArt-003: Clean and simple deployment" title="Direct link to R-SArt-003: Clean and simple deployment">​</a></h4>
+<ul>
+<li>The deployment must be <em>clean</em>.</li>
+<li>The doployment must be simple.</li>
+<li>The term one-click deployment was used during the interviews with researchers and supervisors.</li>
+<li>The README file referring to the deployment must be complete, well structured, informative, easy to read and to understand, and always up to date.</li>
+<li>This requirement could also be moved into the section <em>Usability Requirements</em> since an easy deployment relates to higher usability.</li>
+<li>Origin: Examiner, Researcher <em>Toni</em>, Researcher <em>Goliath</em></li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="open-questions">Open Questions<a href="#open-questions" class="hash-link" aria-label="Direct link to Open Questions" title="Direct link to Open Questions">​</a></h5>
+<ul>
+<li>What exactly is a <em>clean</em> deployment?</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-sart-004-explanatory-models-for-the-end-user">R-SArt-004: Explanatory models for the end user<a href="#r-sart-004-explanatory-models-for-the-end-user" class="hash-link" aria-label="Direct link to R-SArt-004: Explanatory models for the end user" title="Direct link to R-SArt-004: Explanatory models for the end user">​</a></h4>
+<ul>
+<li>The end user should have access to models which support them in understanding the system.</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-sart-005-chaos-testing">R-SArt-005: Chaos testing<a href="#r-sart-005-chaos-testing" class="hash-link" aria-label="Direct link to R-SArt-005: Chaos testing" title="Direct link to R-SArt-005: Chaos testing">​</a></h4>
+<ul>
+<li>The system must be <em>ready</em> for chaos testing, one must be able to apply chaos testing to the system&#x27;s microservices.</li>
+<li>As part of the testing strategy, chaos testing should be done within the EnPro.</li>
+<li>Depending on the toolkit for doing chaos testing, it has to be ensured that the system&#x27;s reliability changes in order to test ist by applying chaos testing technique.</li>
+<li>Regarding the targeted non-functional requirement at test -- reliability --: Either the toolkit simulates unreliability or the system must enable different configurations of reliability itself.</li>
+<li>Origin: Supervisors, Researcher <em>Toni</em></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="product">Product<a href="#product" class="hash-link" aria-label="Direct link to Product" title="Direct link to Product">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="domain">Domain<a href="#domain" class="hash-link" aria-label="Direct link to Domain" title="Direct link to Domain">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-d-001-the-domain-must-be-specific-and-self-explanatory">R-D-001: The domain must be specific and self-explanatory<a href="#r-d-001-the-domain-must-be-specific-and-self-explanatory" class="hash-link" aria-label="Direct link to R-D-001: The domain must be specific and self-explanatory" title="Direct link to R-D-001: The domain must be specific and self-explanatory">​</a></h4>
+<ul>
+<li>The domain must be a specific one.</li>
+<li>Researchs must be able to understand the domain intuitively.</li>
+<li>The domain must not be an obstacle under any circumstances. As long as the domain is <em>self-explanatory</em>, it doesn&#x27;t matter which domain is shown.</li>
+<li>The domain must not require special knowledge about it in order to be able to use the system.</li>
+<li>Origin: Researchers, Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-d-002-the-domain-should-not-be-part-of-the-technology-world">R-D-002: The domain should not be part of the <em>technology world</em><a href="#r-d-002-the-domain-should-not-be-part-of-the-technology-world" class="hash-link" aria-label="Direct link to r-d-002-the-domain-should-not-be-part-of-the-technology-world" title="Direct link to r-d-002-the-domain-should-not-be-part-of-the-technology-world">​</a></h4>
+<ul>
+<li>The domain should be clearly separated from any technology domain to avoid confusion regarding wordings and terms.</li>
+<li>There should be no clashes regarding the language of the domain and the language of the system&#x27;s architecture: no common wordings.</li>
+<li>e.g., words like service, pipeline, container (Docker) should be avoided in the domain language</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="usability-requirements">Usability Requirements<a href="#usability-requirements" class="hash-link" aria-label="Direct link to Usability Requirements" title="Direct link to Usability Requirements">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-001-as-realistic-as-possible">R-U-001: As realistic as possible<a href="#r-u-001-as-realistic-as-possible" class="hash-link" aria-label="Direct link to R-U-001: As realistic as possible" title="Direct link to R-U-001: As realistic as possible">​</a></h4>
+<ul>
+<li>The system should be as close to a <em>real</em> system as possible.</li>
+<li>See R-A-006</li>
+<li>Origin: Examiner</li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="open-questions-1">Open Questions<a href="#open-questions-1" class="hash-link" aria-label="Direct link to Open Questions" title="Direct link to Open Questions">​</a></h5>
+<ul>
+<li>In what regard should the system be realistic? Regarding the look and feel of it -- usability? Regarding the load and usage? Or regarding the messaging traffic between the services? We have to clearify this.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-002-usable-interface">R-U-002: Usable interface<a href="#r-u-002-usable-interface" class="hash-link" aria-label="Direct link to R-U-002: Usable interface" title="Direct link to R-U-002: Usable interface">​</a></h4>
+<ul>
+<li>The user interface should be <em>good</em>.</li>
+<li>It should be usable.</li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-003-configurations">R-U-003: Configurations<a href="#r-u-003-configurations" class="hash-link" aria-label="Direct link to R-U-003: Configurations" title="Direct link to R-U-003: Configurations">​</a></h4>
+<ul>
+<li>The user must be able to configure the system.</li>
+<li>The system exposes a configuration file. This file must be independent of the system&#x27;s technology stack.</li>
+<li>The system should expose only a single central location for configurations.</li>
+<li>The number of configuration files should be limited to only one.</li>
+<li>Origin: Examiner, Supervisors, Researchers, <em>Ulm</em></li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="conflicting-interpretation-of-the-requirement">Conflicting Interpretation of the requirement:<a href="#conflicting-interpretation-of-the-requirement" class="hash-link" aria-label="Direct link to Conflicting Interpretation of the requirement:" title="Direct link to Conflicting Interpretation of the requirement:">​</a></h5>
+<ul>
+<li>It should be possible to configure microservices individually in order to analyze their impact on the rest of the system.</li>
+<li>&quot;If I change one service, what is the response of the rest of the system to that change.&quot; -- Researcher <em>Goliath</em></li>
+<li>Origin: Researcher <em>Goliath</em></li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="open-questions-2">Open Questions<a href="#open-questions-2" class="hash-link" aria-label="Direct link to Open Questions" title="Direct link to Open Questions">​</a></h5>
+<ul>
+<li>What exactly is it, that users can configure?</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-004-experiments">R-U-004: Experiments<a href="#r-u-004-experiments" class="hash-link" aria-label="Direct link to R-U-004: Experiments" title="Direct link to R-U-004: Experiments">​</a></h4>
+<ul>
+<li>Researchers must be able to perform experiments using the RA.</li>
+<li>There must be a configurations file for designing the experiments. See R-U-003.</li>
+<li>The RA must be sufficiently deterministic in order to allow the user to repeatedly carry out experiments.</li>
+<li>Researchers want to do experiments using the RA.</li>
+<li>It must be effortless to use the system for experimentation. -- Researcher <em>Toni</em></li>
+<li>As a researcher, I want control over my experiments. The systems must allow me to have this control. -- Researcher <em>Toni</em>. The system must be fully controllable in order to maximize the degrees of freedom in the experimentation.</li>
+<li>Origin: Supervisors, Researchers, Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-005-the-ra-must-be-lightweight">R-U-005: The RA must be <em>lightweight</em><a href="#r-u-005-the-ra-must-be-lightweight" class="hash-link" aria-label="Direct link to r-u-005-the-ra-must-be-lightweight" title="Direct link to r-u-005-the-ra-must-be-lightweight">​</a></h4>
+<ul>
+<li>Researchers must be able to &quot;simply quickly try something out RE experimentation&quot;.</li>
+<li>It should be really easy and intuitive to quickly deploy the system.</li>
+<li>The RA should not depend on other systems or services. See R-C-001.</li>
+<li>Origin: Researchers</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-006-transparency">R-U-006: Transparency<a href="#r-u-006-transparency" class="hash-link" aria-label="Direct link to R-U-006: Transparency" title="Direct link to R-U-006: Transparency">​</a></h4>
+<ul>
+<li>Researchers must be able to judge quickly whether or not the RA is of good use for them: The documentation or public appearance of the RA must be appealing, comprehensible, complete and informative so that interested parties can easily assess whether the RA meets their requirements.</li>
+<li>Researchers must have access to the code and the documentation.</li>
+<li>The code must be open source.</li>
+<li>One researchers said that she does not like that one simply does not know exactly how the existing RAs compare to each other since their documentations lacking in quality and quantity.</li>
+<li>Origin: Supervisors, Researchers</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-008-observability">R-U-008: Observability<a href="#r-u-008-observability" class="hash-link" aria-label="Direct link to R-U-008: Observability" title="Direct link to R-U-008: Observability">​</a></h4>
+<ul>
+<li>The user must be able to observe and understand exactly what the system is doing or last did.</li>
+<li>The RA must not try to be a blackbox.</li>
+<li>Origin: Examiner, Supervisors, Researchers</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-009-visualization-of-load">R-U-009: Visualization of load<a href="#r-u-009-visualization-of-load" class="hash-link" aria-label="Direct link to R-U-009: Visualization of load" title="Direct link to R-U-009: Visualization of load">​</a></h4>
+<ul>
+<li>The current utilization (load) of the individual microservices should be visualized at runtime.</li>
+<li>The system should show the current differences in load for the individual services (e.g., using thick lines for more requests).</li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-010-explanations-of-metrics">R-U-010: Explanations of metrics<a href="#r-u-010-explanations-of-metrics" class="hash-link" aria-label="Direct link to R-U-010: Explanations of metrics" title="Direct link to R-U-010: Explanations of metrics">​</a></h4>
+<ul>
+<li>Metrics that could be interesting to researchers (e.g. regarding performance) should be well explained.</li>
+<li>Origin: Researcher</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-011-adding-services">R-U-011: Adding services<a href="#r-u-011-adding-services" class="hash-link" aria-label="Direct link to R-U-011: Adding services" title="Direct link to R-U-011: Adding services">​</a></h4>
+<ul>
+<li>It should be easy to add more microservices to the system.</li>
+<li>See R-A-001</li>
+<li>Origin: Researcher</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-012-true-to-the-term-reference-architecture">R-U-012: True to the term <em>Reference Architecture</em><a href="#r-u-012-true-to-the-term-reference-architecture" class="hash-link" aria-label="Direct link to r-u-012-true-to-the-term-reference-architecture" title="Direct link to r-u-012-true-to-the-term-reference-architecture">​</a></h4>
+<ul>
+<li>The system should be usable as a reference system in the context of education. One should be able to show, let observe, and explain what a microservice architecture is and how it reacts to load.</li>
+<li>Also one should be able to observe and better understand the effects of scaling.</li>
+<li>Origin: Researcher</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-013-deterioration-in-performance">R-U-013: Deterioration in performance<a href="#r-u-013-deterioration-in-performance" class="hash-link" aria-label="Direct link to R-U-013: Deterioration in performance" title="Direct link to R-U-013: Deterioration in performance">​</a></h4>
+<ul>
+<li>It should be fairly easy to control the performance of the system. A researcher should be able to decide when and how the performance deteriorates.</li>
+<li>&quot;As a researcher I want to be able to a) reproduce performance issues and b) inject them into the system. I want to be able to trigger potential bottle necks.&quot; -- Researcher <em>Goliath</em></li>
+<li>Individual services should be controlled regarding their performance degradation.</li>
+<li>The system should allow for <em>injecting</em> gradual performance degradation at the system level and at the microservice level.</li>
+<li>It should be possible to <em>inject</em> regression by making configurations to the database (e.g., number of threads available to the database system). See R-Conf-006</li>
+<li>Origin: Researcher, Researcher <em>Goliath</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-014-demo-mode">R-U-014: Demo mode<a href="#r-u-014-demo-mode" class="hash-link" aria-label="Direct link to R-U-014: Demo mode" title="Direct link to R-U-014: Demo mode">​</a></h4>
+<ul>
+<li>There should be a kind of demo mode so that a new user can try out the system quickly and easily: We provide test data with which the system can be directly <em>loaded</em>.</li>
+<li>Origin: Developers</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-015-repeatability-of-experiments">R-U-015: Repeatability of experiments<a href="#r-u-015-repeatability-of-experiments" class="hash-link" aria-label="Direct link to R-U-015: Repeatability of experiments" title="Direct link to R-U-015: Repeatability of experiments">​</a></h4>
+<ul>
+<li>The system must ensure that researchers can repeat experiments as often as they wish.</li>
+<li>As a researcher, I want to repeat an experminent multiple times and I need the system to be in the exact same state at the beginning of each repetition of the experiment.</li>
+<li>A stakeholder said: &quot;If I have scaling in place, when the experiment is finished, you want the state to be just like before the experiment. This allows repeatability.&quot;</li>
+<li>This requirement could also be moved into the section Configurations.</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-016-scheduling-of-experiments">R-U-016: Scheduling of experiments<a href="#r-u-016-scheduling-of-experiments" class="hash-link" aria-label="Direct link to R-U-016: Scheduling of experiments" title="Direct link to R-U-016: Scheduling of experiments">​</a></h4>
+<ul>
+<li>The system must offer the possibility to schedule experiments.</li>
+<li>As a researcher, I want to be able to schedule experiments.</li>
+<li>This requirement could also be moved into the section Configurations.</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-017-measurements-and-metrics">R-U-017: Measurements and Metrics<a href="#r-u-017-measurements-and-metrics" class="hash-link" aria-label="Direct link to R-U-017: Measurements and Metrics" title="Direct link to R-U-017: Measurements and Metrics">​</a></h4>
+<ul>
+<li>The system should make measurements related to the system&#x27;s behavior, record these measurements and make them available for the user.</li>
+<li>External developers said that they needed &quot;comprehensive measurements from the system&quot;.</li>
+<li>The recorded data should be as diverse and comprehensive as possible. This way researchers can decide per case which measures they need.</li>
+<li>Origin: <em>Ulm</em></li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="open-questions-3">Open Questions<a href="#open-questions-3" class="hash-link" aria-label="Direct link to Open Questions" title="Direct link to Open Questions">​</a></h5>
+<ul>
+<li>What exactly is it that could be measured?</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-018-usage-costs">R-U-018: Usage costs<a href="#r-u-018-usage-costs" class="hash-link" aria-label="Direct link to R-U-018: Usage costs" title="Direct link to R-U-018: Usage costs">​</a></h4>
+<ul>
+<li>The system should measure and report the costs of running and scaling the system.</li>
+<li>As a user / researcher, I want to make decisions partly based on the costs of the system&#x27;s usage.</li>
+<li>The supervisors do not require this.</li>
+<li>See R-Conf-004</li>
+<li>Origin: <em>Ulm</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-u-019-jmeter-readiness">R-U-019: JMeter readiness<a href="#r-u-019-jmeter-readiness" class="hash-link" aria-label="Direct link to R-U-019: JMeter readiness" title="Direct link to R-U-019: JMeter readiness">​</a></h4>
+<ul>
+<li>Using JMeter to test the performance of the RA must be a) possible and b) easy and intuitive.</li>
+<li>How can the likelihood of achieving this requirement be maximized? By providing a comprehensive documentation detailing the architecture, endpoints, expected behaviors, and data formats of the RA. The documentation should guide performance engineers in setting up test scenarios accurately within JMeter. In addition, by defining clear API contracts or specifications (such as Swagger/OpenAPI documentation) for the RA&#x27;s endpoints, request formats, and responses. This helps in accurately configuring JMeter&#x27;s HTTP Request samplers and assertions. Also, see R-SArt-001.</li>
+<li>See R-T-007</li>
+<li>Origin: Derived from R-T-007</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="non-functional-requirements">Non-functional Requirements<a href="#non-functional-requirements" class="hash-link" aria-label="Direct link to Non-functional Requirements" title="Direct link to Non-functional Requirements">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-nfr-001-performance">R-NFR-001: Performance<a href="#r-nfr-001-performance" class="hash-link" aria-label="Direct link to R-NFR-001: Performance" title="Direct link to R-NFR-001: Performance">​</a></h4>
+<ul>
+<li>The microservices must be performant.</li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-nfr-002-elasticity--auto-scaling">R-NFR-002: Elasticity / Auto scaling<a href="#r-nfr-002-elasticity--auto-scaling" class="hash-link" aria-label="Direct link to R-NFR-002: Elasticity / Auto scaling" title="Direct link to R-NFR-002: Elasticity / Auto scaling">​</a></h4>
+<ul>
+<li>The system must be <em>elastic</em>.</li>
+<li>The system must scale automatically.</li>
+<li>Origin: Examiner, Researcher <em>Toni</em></li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="open-question">Open Question<a href="#open-question" class="hash-link" aria-label="Direct link to Open Question" title="Direct link to Open Question">​</a></h5>
+<ul>
+<li>What exactly does <em>elastic</em> mean? What is the examiner&#x27;s understanding of the term?</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-nfr-003-resilience">R-NFR-003: Resilience<a href="#r-nfr-003-resilience" class="hash-link" aria-label="Direct link to R-NFR-003: Resilience" title="Direct link to R-NFR-003: Resilience">​</a></h4>
+<ul>
+<li>The system should be resilient.</li>
+<li>The systems&#x27; microservices must not fail suddenly and without good reason.</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-nfr-004-maintainability">R-NFR-004: Maintainability<a href="#r-nfr-004-maintainability" class="hash-link" aria-label="Direct link to R-NFR-004: Maintainability" title="Direct link to R-NFR-004: Maintainability">​</a></h4>
+<ul>
+<li>In the long term, the system should be easy to maintain.</li>
+<li>Not only for the developers but also for the researchers using the system.</li>
+<li>Instead of trying to support every possible deployment, only one deployment should be supported but that one should be supported very well.</li>
+<li>In order to improve maintainability, things should be kept as simple as possible. Note, that this is a very general and loose requirement.</li>
+<li>Origin: Researcher <em>Goliath</em></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="configurations">Configurations<a href="#configurations" class="hash-link" aria-label="Direct link to Configurations" title="Direct link to Configurations">​</a></h3>
+<p>See also R-U-003.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-conf-001-variable-in-size">R-Conf-001: Variable in size<a href="#r-conf-001-variable-in-size" class="hash-link" aria-label="Direct link to R-Conf-001: Variable in size" title="Direct link to R-Conf-001: Variable in size">​</a></h4>
+<ul>
+<li>The system&#x27;s size should be configurable.</li>
+<li>As a researcher, I want to be able to decide how big or small the system actually is. I want to set the system&#x27;s size in order to have it fit my needs.</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="open-questions-4">Open Questions<a href="#open-questions-4" class="hash-link" aria-label="Direct link to Open Questions" title="Direct link to Open Questions">​</a></h5>
+<ul>
+<li>What is a small system? What is a big system? How should size be measured?</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-conf-002-load-profiles">R-Conf-002: Load profiles<a href="#r-conf-002-load-profiles" class="hash-link" aria-label="Direct link to R-Conf-002: Load profiles" title="Direct link to R-Conf-002: Load profiles">​</a></h4>
+<ul>
+<li>The system must offer the possibility to use load profiles.</li>
+<li>As a researcher, I want to specify load profiles to control the system when experimenting with it.</li>
+<li>Advice from stakeholder: Derive the load profiles from the domain.</li>
+<li>As a researcher, I want diversity in the system&#x27;s load patterns because I want to know, if I deploy an elasticity policy, how will that perform?</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-conf-003-elasticity-policies"><del>R-Conf-003: Elasticity policies</del><a href="#r-conf-003-elasticity-policies" class="hash-link" aria-label="Direct link to r-conf-003-elasticity-policies" title="Direct link to r-conf-003-elasticity-policies">​</a></h4>
+<ul>
+<li>The system must offer the possibility to specify elasticity policies.</li>
+<li>We discarded this requ. since it only serves as a high-level term for scaling and load handling. Since it could be that in the future there will be more specific requirements, we did not delete it entirely.</li>
+<li>See R-Conf-002, R-Conf-003</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-conf-004-scaling-policies">R-Conf-004: Scaling policies<a href="#r-conf-004-scaling-policies" class="hash-link" aria-label="Direct link to R-Conf-004: Scaling policies" title="Direct link to R-Conf-004: Scaling policies">​</a></h4>
+<ul>
+<li>
+<p>The system should offer different alternatives for scaling.</p>
+</li>
+<li>
+<p>The system should allow the user to configure the scaling techniques in place.</p>
+</li>
+<li>
+<p>For each scaling strategy, the system should inform about the costs of the chosen scaling strategy. -- <em>Ulm</em></p>
+<ul>
+<li>See R-U-018</li>
+<li>The supervisors do not require this.</li>
+</ul>
+</li>
+<li>
+<p>Origin: Researcher <em>Toni</em></p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-conf-005-system-variants">R-Conf-005: System variants<a href="#r-conf-005-system-variants" class="hash-link" aria-label="Direct link to R-Conf-005: System variants" title="Direct link to R-Conf-005: System variants">​</a></h4>
+<ul>
+<li>The system should have different variants.</li>
+<li>e.g., one variant with database as a service, another variant with a shared database</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="open-questions-5">Open Questions<a href="#open-questions-5" class="hash-link" aria-label="Direct link to Open Questions" title="Direct link to Open Questions">​</a></h5>
+<ul>
+<li>What other variants could be interesting?</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-conf-006-configurations-scope">R-Conf-006: Configurations scope<a href="#r-conf-006-configurations-scope" class="hash-link" aria-label="Direct link to R-Conf-006: Configurations scope" title="Direct link to R-Conf-006: Configurations scope">​</a></h4>
+<ul>
+<li>The system should allow for configurations on the following levels:<!-- -->
+<ul>
+<li>System</li>
+<li>Microservice</li>
+<li>Database (Management System)</li>
+</ul>
+</li>
+<li>Origin: Researcher <em>Goliath</em></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="design">Design<a href="#design" class="hash-link" aria-label="Direct link to Design" title="Direct link to Design">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="architecture">Architecture<a href="#architecture" class="hash-link" aria-label="Direct link to Architecture" title="Direct link to Architecture">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-a-001-extendability">R-A-001: Extendability<a href="#r-a-001-extendability" class="hash-link" aria-label="Direct link to R-A-001: Extendability" title="Direct link to R-A-001: Extendability">​</a></h4>
+<ul>
+<li>The RA must be expandable: Additional microservices can be added without further ado.</li>
+<li>See R-U-011</li>
+<li>Origin: Researcher</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-a-002-scale-out-scenario-for-databases">R-A-002: Scale out scenario for databases<a href="#r-a-002-scale-out-scenario-for-databases" class="hash-link" aria-label="Direct link to R-A-002: Scale out scenario for databases" title="Direct link to R-A-002: Scale out scenario for databases">​</a></h4>
+<ul>
+<li>The system should account for a scale out scenario regarding databases.</li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-a-003-distributed-transactions">R-A-003: Distributed Transactions<a href="#r-a-003-distributed-transactions" class="hash-link" aria-label="Direct link to R-A-003: Distributed Transactions" title="Direct link to R-A-003: Distributed Transactions">​</a></h4>
+<ul>
+<li>The system should support distributed transactions.</li>
+<li>Origin: Supervisors</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-a-004-antipatterns-must-be-avoided">R-A-004: Antipatterns must be avoided<a href="#r-a-004-antipatterns-must-be-avoided" class="hash-link" aria-label="Direct link to R-A-004: Antipatterns must be avoided" title="Direct link to R-A-004: Antipatterns must be avoided">​</a></h4>
+<ul>
+<li>Origin: Supervisors</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-a-005-loose-coupling">R-A-005: Loose Coupling<a href="#r-a-005-loose-coupling" class="hash-link" aria-label="Direct link to R-A-005: Loose Coupling" title="Direct link to R-A-005: Loose Coupling">​</a></h4>
+<ul>
+<li>Services must be only loosely coupled.</li>
+<li>Regarding time and location and structure.</li>
+<li>API first: Services are only allowed to expose and work with other services&#x27; interfaces.</li>
+<li>A domain-driven declaration of service responsibilities must be at hand.</li>
+<li>Origin: Examiner, Supervisors, Researchers, Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-a-006-diversity-in-communication-protocols">R-A-006: Diversity in communication protocols<a href="#r-a-006-diversity-in-communication-protocols" class="hash-link" aria-label="Direct link to R-A-006: Diversity in communication protocols" title="Direct link to R-A-006: Diversity in communication protocols">​</a></h4>
+<ul>
+<li>The system should have diversity regarding communication protocols.</li>
+<li>A researcher said: &quot;Just like in reality.&quot;</li>
+<li>See R-U-001</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-a-007-exclusive-components-that-facilitate-research">R-A-007: Exclusive components that &quot;facilitate research&quot;<a href="#r-a-007-exclusive-components-that-facilitate-research" class="hash-link" aria-label="Direct link to R-A-007: Exclusive components that &quot;facilitate research&quot;" title="Direct link to R-A-007: Exclusive components that &quot;facilitate research&quot;">​</a></h4>
+<ul>
+<li>The system should have separate components that allow for experimentation.</li>
+<li>A researcher said: &quot;Additional components have to be coded that facilitate research. For instance, injecting load into the system.&quot;</li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="open-questions-6">Open Questions<a href="#open-questions-6" class="hash-link" aria-label="Direct link to Open Questions" title="Direct link to Open Questions">​</a></h5>
+<ul>
+<li>What do these components really do?</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-a-008-distributed-tracing">R-A-008: Distributed Tracing<a href="#r-a-008-distributed-tracing" class="hash-link" aria-label="Direct link to R-A-008: Distributed Tracing" title="Direct link to R-A-008: Distributed Tracing">​</a></h4>
+<ul>
+<li>The system must have distributed tracing available.</li>
+<li>Origin: <em>Ulm</em></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="microservice-patterns">Microservice Patterns<a href="#microservice-patterns" class="hash-link" aria-label="Direct link to Microservice Patterns" title="Direct link to Microservice Patterns">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-mp-001-database-per-service">R-MP-001: Database per Service<a href="#r-mp-001-database-per-service" class="hash-link" aria-label="Direct link to R-MP-001: Database per Service" title="Direct link to R-MP-001: Database per Service">​</a></h4>
+<ul>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-mp-002-messaging-asynchronous-communication">R-MP-002: Messaging (Asynchronous Communication)<a href="#r-mp-002-messaging-asynchronous-communication" class="hash-link" aria-label="Direct link to R-MP-002: Messaging (Asynchronous Communication)" title="Direct link to R-MP-002: Messaging (Asynchronous Communication)">​</a></h4>
+<p>Origin: Examiner, Supervisors, Researchers, Researcher <em>Toni</em></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-mp-003-circuit-breaker">R-MP-003: Circuit Breaker<a href="#r-mp-003-circuit-breaker" class="hash-link" aria-label="Direct link to R-MP-003: Circuit Breaker" title="Direct link to R-MP-003: Circuit Breaker">​</a></h4>
+<ul>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-mp-004-api-gateway">R-MP-004: API Gateway<a href="#r-mp-004-api-gateway" class="hash-link" aria-label="Direct link to R-MP-004: API Gateway" title="Direct link to R-MP-004: API Gateway">​</a></h4>
+<ul>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-mp-005-saga">R-MP-005: Saga<a href="#r-mp-005-saga" class="hash-link" aria-label="Direct link to R-MP-005: Saga" title="Direct link to R-MP-005: Saga">​</a></h4>
+<ul>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-mp-007-frontends-for-backends">R-MP-007: Frontends for Backends<a href="#r-mp-007-frontends-for-backends" class="hash-link" aria-label="Direct link to R-MP-007: Frontends for Backends" title="Direct link to R-MP-007: Frontends for Backends">​</a></h4>
+<ul>
+<li>Origin: Examiner</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="technologies">Technologies<a href="#technologies" class="hash-link" aria-label="Direct link to Technologies" title="Direct link to Technologies">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-t-001-use-kubernetes">R-T-001: Use Kubernetes<a href="#r-t-001-use-kubernetes" class="hash-link" aria-label="Direct link to R-T-001: Use Kubernetes" title="Direct link to R-T-001: Use Kubernetes">​</a></h4>
+<ul>
+<li>Origin: Examiner, Supervisors, Researcher</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-t-002-no-python">R-T-002: No Python<a href="#r-t-002-no-python" class="hash-link" aria-label="Direct link to R-T-002: No Python" title="Direct link to R-T-002: No Python">​</a></h4>
+<ul>
+<li>Python should only be considered as a last resort.<!-- -->
+<ul>
+<li>If we used Python, we would have to explain why.</li>
+</ul>
+</li>
+<li><em>See R-E-003</em></li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-t-003-use-go">R-T-003: Use Go<a href="#r-t-003-use-go" class="hash-link" aria-label="Direct link to R-T-003: Use Go" title="Direct link to R-T-003: Use Go">​</a></h4>
+<ul>
+<li>The programming language Go should be used along with a corresponding framework.</li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-t-004-spring-boot">R-T-004: Spring Boot<a href="#r-t-004-spring-boot" class="hash-link" aria-label="Direct link to R-T-004: Spring Boot" title="Direct link to R-T-004: Spring Boot">​</a></h4>
+<ul>
+<li>Spring Boot or something similiar must be used.</li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-t-005-kafka">R-T-005: Kafka<a href="#r-t-005-kafka" class="hash-link" aria-label="Direct link to R-T-005: Kafka" title="Direct link to R-T-005: Kafka">​</a></h4>
+<ul>
+<li>Kafka should be used for the middleware.</li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-t-006-dapr">R-T-006: Dapr<a href="#r-t-006-dapr" class="hash-link" aria-label="Direct link to R-T-006: Dapr" title="Direct link to R-T-006: Dapr">​</a></h4>
+<ul>
+<li>Dapr should be used for the middleware.</li>
+<li>Origin: Supervisors</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-t-007-jmeter">R-T-007: JMeter<a href="#r-t-007-jmeter" class="hash-link" aria-label="Direct link to R-T-007: JMeter" title="Direct link to R-T-007: JMeter">​</a></h4>
+<ul>
+<li>JMeter should be used for load and elasticity tests.</li>
+<li><a href="https://jmeter.apache.org" target="_blank" rel="noopener noreferrer">https://jmeter.apache.org</a></li>
+<li>See R-U-019</li>
+<li>Origin: Examiner</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-t-008-opentelemetry">R-T-008: OpenTelemetry<a href="#r-t-008-opentelemetry" class="hash-link" aria-label="Direct link to R-T-008: OpenTelemetry" title="Direct link to R-T-008: OpenTelemetry">​</a></h4>
+<ul>
+<li>OpenTelemetry should be used for monitoring.</li>
+<li><a href="https://opentelemetry.io" target="_blank" rel="noopener noreferrer">https://opentelemetry.io</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-demo" target="_blank" rel="noopener noreferrer">https://github.com/open-telemetry/opentelemetry-demo</a> -- We should investigate this as recommended by Researcher <em>Goliath</em></li>
+<li>Origin: Researcher <em>Toni</em></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="r-t-009-kotlin">R-T-009: Kotlin<a href="#r-t-009-kotlin" class="hash-link" aria-label="Direct link to R-T-009: Kotlin" title="Direct link to R-T-009: Kotlin">​</a></h4>
+<ul>
+<li>The programming language Kotlin should be used.</li>
+<li>Origin: Researcher <em>Goliath</em></li>
+</ul></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/docs/dev-manuals/architecture/domain-model"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Domain Model</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/docs/dev-manuals/architecture/business-processes"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Busines Processes</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#to-do-list-and-open-questions-re-this-document" class="table-of-contents__link toc-highlight">To-do List and Open Questions RE this document</a></li><li><a href="#re-wording-in-this-document" class="table-of-contents__link toc-highlight">RE Wording in this Document</a></li><li><a href="#stakeholders" class="table-of-contents__link toc-highlight">Stakeholders</a></li><li><a href="#requirement-categories" class="table-of-contents__link toc-highlight">Requirement Categories</a></li><li><a href="#constraints" class="table-of-contents__link toc-highlight">Constraints</a><ul><li><a href="#r-c-001-no-external-services" class="table-of-contents__link toc-highlight">R-C-001: No external services</a></li><li><a href="#r-c-002-free-of-charge" class="table-of-contents__link toc-highlight">R-C-002: Free of charge</a></li></ul></li><li><a href="#process" class="table-of-contents__link toc-highlight">Process</a><ul><li><a href="#enpro-requirements" class="table-of-contents__link toc-highlight">EnPro Requirements</a></li><li><a href="#software-artefacts" class="table-of-contents__link toc-highlight">Software Artefacts</a></li></ul></li><li><a href="#product" class="table-of-contents__link toc-highlight">Product</a><ul><li><a href="#domain" class="table-of-contents__link toc-highlight">Domain</a></li><li><a href="#usability-requirements" class="table-of-contents__link toc-highlight">Usability Requirements</a></li><li><a href="#non-functional-requirements" class="table-of-contents__link toc-highlight">Non-functional Requirements</a></li><li><a href="#configurations" class="table-of-contents__link toc-highlight">Configurations</a></li></ul></li><li><a href="#design" class="table-of-contents__link toc-highlight">Design</a><ul><li><a href="#architecture" class="table-of-contents__link toc-highlight">Architecture</a></li><li><a href="#microservice-patterns" class="table-of-contents__link toc-highlight">Microservice Patterns</a></li><li><a href="#technologies" class="table-of-contents__link toc-highlight">Technologies</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 MiSArch contributors. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-docs/user-manuals/how-to-use-experiment-tool" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.3.2">
+<title data-rh="true">How to Use the MiSArch Experiment Tool | MiSArch</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://misarch.github.io/docs/docs/user-manuals/how-to-use-experiment-tool"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="How to Use the MiSArch Experiment Tool | MiSArch"><meta data-rh="true" name="description" content="This page walks you through every step of designing, executing, and analyzing experiments with the MiSArch Experiment Tool."><meta data-rh="true" property="og:description" content="This page walks you through every step of designing, executing, and analyzing experiments with the MiSArch Experiment Tool."><link data-rh="true" rel="icon" href="/icons/misarch-logo.svg"><link data-rh="true" rel="canonical" href="https://misarch.github.io/docs/docs/user-manuals/how-to-use-experiment-tool"><link data-rh="true" rel="alternate" href="https://misarch.github.io/docs/docs/user-manuals/how-to-use-experiment-tool" hreflang="en"><link data-rh="true" rel="alternate" href="https://misarch.github.io/docs/docs/user-manuals/how-to-use-experiment-tool" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.38aa692a.css">
+<script src="/assets/js/runtime~main.8daa9574.js" defer="defer"></script>
+<script src="/assets/js/main.35c3e160.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/icons/misarch-logo.svg" alt="" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/icons/misarch-logo-dark.svg" alt="" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">MiSArch</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/">Docs</a><a class="navbar__item navbar__link" href="/docs/graphql/schema">GraphQL</a><a class="navbar__item navbar__link" href="/docs/graphql/address">GraphQL (services)</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/MiSArch" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/">Project Overview</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/docs/category/installation">Installation</a><button aria-label="Expand sidebar category &#x27;Installation&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/docs/category/usage">Usage</a><button aria-label="Collapse sidebar category &#x27;Usage&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/docs/user-manuals/how-to-use-frontend">How to Use the Frontend</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/docs/user-manuals/how-to-use-experiment-tool">How to Use the MiSArch Experiment Tool</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/docs/category/development">Development</a><button aria-label="Expand sidebar category &#x27;Development&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/docs/category/usage"><span itemprop="name">Usage</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">How to Use the MiSArch Experiment Tool</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>How to Use the MiSArch Experiment Tool</h1>
+<blockquote>
+<p>This page walks you through <strong>every step</strong> of designing, executing, and analyzing experiments with the MiSArch Experiment Tool.</p>
+</blockquote>
+<blockquote>
+<p>Note, that the MiSArch Experiment Tool itself contains several helpful documentation in the help pages, helping you to get your experiments running.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="where-to-find-the-misarch-experiment-tool-frontend">Where to Find the MiSArch Experiment Tool Frontend<a href="#where-to-find-the-misarch-experiment-tool-frontend" class="hash-link" aria-label="Direct link to Where to Find the MiSArch Experiment Tool Frontend" title="Direct link to Where to Find the MiSArch Experiment Tool Frontend">​</a></h3>
+<p>If we deploy the MiSArch system — the whole infrastructure — on our local machine using Docker, we will find the Tool at the following URL: <a href="http://localhost:5173/frontend" target="_blank" rel="noopener noreferrer">http://localhost:5173/frontend</a>.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="contents">Contents<a href="#contents" class="hash-link" aria-label="Direct link to Contents" title="Direct link to Contents">​</a></h2>
+<ol>
+<li><a href="#what-is-an-experiment">What is an Experiment?</a></li>
+<li><a href="#before-you-start-artifacts--concepts">Before You Start (Artifacts &amp; Concepts)</a></li>
+<li><a href="#create-or-load-an-experiment">Create or Load an Experiment</a></li>
+<li><a href="#tour-of-the-user-interface">Tour of the User Interface</a></li>
+<li><a href="#configure-work-gatling-kotlin-dsl">Configure Work (Gatling Kotlin DSL)</a></li>
+<li><a href="#configure-load-open-load-model">Configure Load (Open-Load Model)</a></li>
+<li><a href="#optional-configure-a-warm-up">Optional: Configure a Warm-Up</a></li>
+<li><a href="#configure-failures">Configure Failures</a>
+<ul>
+<li><a href="#chaos-toolkit-failures">Chaos Toolkit Failures</a></li>
+<li><a href="#misarch-experiment-configuration-failures">MiSArch Experiment Configuration Failures</a></li>
+</ul>
+</li>
+<li><a href="#define-experiment-goals">Define Experiment Goals</a>
+<ul>
+<li><a href="#manual-goals">Manual Goals</a></li>
+<li><a href="#automated-goal-definition">Automated Goal Definition</a></li>
+</ul>
+</li>
+<li><a href="#visualize-with-the-experiment-graph">Visualize with the Experiment Graph</a></li>
+<li><a href="#run-stop-save-and-version-experiments">Run, Stop, Save, and Version Experiments</a></li>
+<li><a href="#analyze-results-in-grafana-dashboards">Analyze Results in Grafana Dashboards</a></li>
+<li><a href="#tips-constraints-and-gotchas">Tips, Constraints, and Gotchas</a></li>
+<li><a href="#appendix-storage-structure--files">Storage Structure &amp; Files</a></li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-is-an-experiment">What is an Experiment?<a href="#what-is-an-experiment" class="hash-link" aria-label="Direct link to What is an Experiment?" title="Direct link to What is an Experiment?">​</a></h2>
+<p>An <strong>experiment</strong> is a versioned bundle of configurations identified by <strong>Test-UUID</strong> and <strong>Test-Version</strong>. It can contain:</p>
+<ul>
+<li><strong>Work</strong> (the user/session <em>behavior</em> scripted in Gatling Kotlin DSL).</li>
+<li><strong>Load</strong> (the <em>arrival pattern</em> of users for each work scenario, modeled as open load).</li>
+<li><strong>Failures</strong> via:<!-- -->
+<ul>
+<li><strong>Chaos Toolkit</strong> (standard experiments/probes/actions),</li>
+<li><strong>MiSArch Experiment Configuration</strong> (service-level deterioration and resource stress).</li>
+</ul>
+</li>
+<li><strong>Goals</strong> (thresholds for client-facing performance metrics).</li>
+<li>An optional <strong>warm-up</strong> phase.</li>
+</ul>
+<p>Experiments live as files in the Experiment Executor’s storage, grouped by Test-UUID and version.</p>
+<!-- -->
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="before-you-start-artifacts--concepts">Before You Start (Artifacts &amp; Concepts)<a href="#before-you-start-artifacts--concepts" class="hash-link" aria-label="Direct link to Before You Start (Artifacts &amp; Concepts)" title="Direct link to Before You Start (Artifacts &amp; Concepts)">​</a></h2>
+<p>You’ll work with these pieces:</p>
+<ul>
+<li><strong>Gatling Work</strong>: Kotlin DSL scenarios describing the sequence of requests and expected data, plus pauses to mimic user behavior.</li>
+<li><strong>Gatling Load</strong>: Open-load arrivals (users per second) for each scenario; duration is in seconds.</li>
+<li><strong>Chaos Toolkit</strong>: Optional steady-state hypothesis (probes) and a sequence of actions/probes (with pauses) to inject failures.</li>
+<li><strong>MiSArch Experiment Configuration</strong>: Time-ordered sets of failures for specific services:<!-- -->
+<ul>
+<li>Pub-sub deterioration (delay/error on dapr pub-sub),</li>
+<li>Service-invocation deterioration (delay/error on HTTP),</li>
+<li>Artificial <strong>memory</strong> or <strong>CPU</strong> usage.</li>
+<li>Failures <strong>persist until overwritten</strong> by the next failure set.</li>
+</ul>
+</li>
+<li><strong>Goals &amp; Warm-Up</strong>:<!-- -->
+<ul>
+<li><strong>Goals</strong>: e.g., max/mean response time thresholds.</li>
+<li><strong>Warm-up</strong>: constant <em>closed</em> load per scenario for a configured time before the actual experiment.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="create-or-load-an-experiment">Create or Load an Experiment<a href="#create-or-load-an-experiment" class="hash-link" aria-label="Direct link to Create or Load an Experiment" title="Direct link to Create or Load an Experiment">​</a></h2>
+<p>When opening the tool you can either <strong>load</strong> an existing experiment version or <strong>generate</strong> a new one.</p>
+<p><img decoding="async" loading="lazy" alt="Experiment Selection" src="/assets/images/Frontend_select-6fa0e80e3a738e2002b6f0e9bc9d07d1.png" width="492" height="684" class="img_ev3q"></p>
+<p><strong>Generating a new experiment</strong> provides initial presets:</p>
+<ul>
+<li>Choose a <strong>load pattern</strong>:<!-- -->
+<ol>
+<li><strong>Realistic</strong> (sampled from a real web-shop day pattern, scaled by your max-arrivals),</li>
+<li><strong>Scalability</strong> (monotonic increase),</li>
+<li><strong>Elasticity</strong> (three spikes with cool-downs),</li>
+<li><strong>Resilience</strong> (slow ramp, cool-down, big spike, cool-down, high plateau).</li>
+</ol>
+</li>
+<li>Default <strong>work scenarios</strong> (e.g., <code>buyProcessScenario</code>, <code>abortedBuyProcessScenario</code>) for realistic/resilience; <code>buyProcessScenario</code> for resilience/scalability.</li>
+<li>Default <strong>failures</strong> (example):<!-- -->
+<ul>
+<li>Chaos Toolkit: check gateway healthy, then terminate it at experiment start (Kubernetes/Docker variants).</li>
+<li>MiSArch Config: HTTP 404 with 1000 ms delay on <strong>catalog</strong> service for 1/6 of the experiment after the Chaos failure.</li>
+</ul>
+</li>
+<li>Default <strong>goals</strong>: max response time <strong>2000 ms</strong>, mean <strong>1000 ms</strong> (adjust as needed).</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="Load Patterns" src="/assets/images/load_patterns-4d3b6d2fa337290c516f7f9b01ece3db.svg" width="4194" height="1036" class="img_ev3q"></p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="tour-of-the-user-interface">Tour of the User Interface<a href="#tour-of-the-user-interface" class="hash-link" aria-label="Direct link to Tour of the User Interface" title="Direct link to Tour of the User Interface">​</a></h2>
+<p>The single-page UI has these segments:</p>
+<ol>
+<li><strong>Header</strong> (save, delete, load/new, new version, execute/stop, global help).</li>
+<li><strong>Experiment Graph</strong> (arrivals/requests plus failure timelines; toggle between load and warm-up view).</li>
+<li><strong>Work Configuration</strong> (code editor with tabs per scenario).</li>
+<li><strong>Chaos Toolkit Configuration</strong> (visual editor or raw JSON editor).</li>
+<li><strong>MiSArch Experiment Configuration</strong> (visual editor or raw JSON editor).</li>
+<li><strong>Goal Configuration</strong> (manual thresholds or auto goal definition).</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Entire User Interface" src="/assets/images/Frontend_Entire-fef9bd20e9f0e26111b137d429e9c53a.png" width="3454" height="1890" class="img_ev3q"></p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configure-work-gatling-kotlin-dsl">Configure Work (Gatling Kotlin DSL)<a href="#configure-work-gatling-kotlin-dsl" class="hash-link" aria-label="Direct link to Configure Work (Gatling Kotlin DSL)" title="Direct link to Configure Work (Gatling Kotlin DSL)">​</a></h2>
+<p>Open <strong>Work</strong> in the top-right editor. Each <strong>scenario</strong> is a tab:</p>
+<ul>
+<li>Add / rename / delete scenarios via the UI controls.</li>
+<li>Script <em>requests</em>, <em>checks</em>, and <em>pauses</em> (Durations) to approximate realistic behavior.</li>
+<li>Keep work and load <strong>separate</strong> (load is configured elsewhere).</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Only the <strong>Gatling Kotlin DSL</strong> is supported for work scripts.</p>
+</blockquote>
+<p><strong>Example code:</strong></p>
+<div class="language-kotlin codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-kotlin codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#CF222E">val</span><span class="token plain"> abortedBuyProcessScenario </span><span class="token operator" style="color:#D73A49">=</span><span class="token plain"> </span><span class="token function" style="color:#8250DF">scenario</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-literal singleline string" style="color:#C6105F">&quot;abortedBuyProcessScenario&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#8250DF">exec</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> session </span><span class="token operator" style="color:#D73A49">-&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    session</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#8250DF">set</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-literal singleline string" style="color:#C6105F">&quot;targetUrl&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string-literal singleline string" style="color:#C6105F">&quot;http://misarch-gateway.misarch.svc.cluster.local:8080/graphql&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#8250DF">exec</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#8250DF">http</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-literal singleline string" style="color:#C6105F">&quot;Get Access Token&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#8250DF">post</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-literal singleline string" style="color:#C6105F">&quot;http://keycloak.misarch.svc.cluster.local:80/keycloak/realms/Misarch/protocol/openid-connect/token&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#8250DF">check</span><span class="token punctuation" style="color:#393A34">(</span><span class="token function" style="color:#8250DF">jsonPath</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-literal singleline string" style="color:#C6105F">&quot;$.access_token&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#8250DF">saveAs</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string-literal singleline string" style="color:#C6105F">&quot;accessToken&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#8250DF">pause</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">Duration</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#8250DF">ofMillis</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#005CC5">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> Duration</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#8250DF">ofMillis</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#005CC5">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configure-load-open-load-model">Configure Load (Open-Load Model)<a href="#configure-load-open-load-model" class="hash-link" aria-label="Direct link to Configure Load (Open-Load Model)" title="Direct link to Configure Load (Open-Load Model)">​</a></h2>
+<p>Click the <strong>gear</strong> icon in the graph to open the Load Configuration.</p>
+<p>For each scenario:</p>
+<ul>
+<li><strong>Duration (s):</strong> total time during which users arrive.</li>
+<li><strong>Arrivals (users/s):</strong> specify how many new users start the scenario each second.<!-- -->
+<blockquote>
+<p><strong>Example (10 s):</strong> 3, 4, 0, 0, 0, 0, 0, 0, 0, 5
+This does not imply no requests in “zero” seconds—users that arrived earlier are still completing work.</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="optional-configure-a-warm-up">Optional: Configure a Warm-Up<a href="#optional-configure-a-warm-up" class="hash-link" aria-label="Direct link to Optional: Configure a Warm-Up" title="Direct link to Optional: Configure a Warm-Up">​</a></h2>
+<p>Open the <strong>hamburger menu</strong> to configure a warm-up:</p>
+<ul>
+<li><strong>Duration</strong></li>
+<li><strong>Constant users per scenario</strong> (closed load)</li>
+</ul>
+<p>This helps stabilize the system so your actual experiment measurements start under steady conditions.</p>
+<p>Replace with your warm-up dialog screenshot.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configure-failures">Configure Failures<a href="#configure-failures" class="hash-link" aria-label="Direct link to Configure Failures" title="Direct link to Configure Failures">​</a></h2>
+<p>You can define failures in two places. Both offer:</p>
+<ul>
+<li>A <strong>simplified form</strong> to add/remove/edit failures quickly.</li>
+<li>A <strong>raw JSON</strong> editor if you prefer direct DSL editing.</li>
+<li>Both views stay in sync.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="chaos-toolkit-failures">Chaos Toolkit Failures<a href="#chaos-toolkit-failures" class="hash-link" aria-label="Direct link to Chaos Toolkit Failures" title="Direct link to Chaos Toolkit Failures">​</a></h3>
+<ul>
+<li>Optional <strong>steady-state hypothesis</strong> (probes) to assert system health before failure.</li>
+<li><strong>Method</strong> actions and/or probes that inject failures; pauses available before/after.</li>
+<li>Examples: check a Kubernetes deployment is healthy, then terminate pods matching a label; or Docker container termination and restart.</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;title&quot;: &quot;your-uuid:vX&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;steady-state-hypothesis&quot;: {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /* probes */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  },</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &quot;method&quot;: [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      &quot;type&quot;: &quot;action&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      &quot;name&quot;: &quot;Your Action&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      &quot;provider&quot;: {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        /* module/func + args */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      },</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      &quot;pauses&quot;: { &quot;before&quot;: 0, &quot;after&quot;: 0 }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="misarch-experiment-configuration-failures">MiSArch Experiment Configuration Failures<a href="#misarch-experiment-configuration-failures" class="hash-link" aria-label="Direct link to MiSArch Experiment Configuration Failures" title="Direct link to MiSArch Experiment Configuration Failures">​</a></h3>
+<ul>
+<li>Define <strong>failure sets</strong> for one or more services at specific times, with optional pauses between sets:<!-- -->
+<ul>
+<li><strong>pubSubDeterioration</strong> (delay/error probability),</li>
+<li><strong>serviceInvocationDeterioration</strong> (delay/error code/probabilities),</li>
+<li><strong>artificialMemoryUsage</strong>,</li>
+<li><strong>artificialCPUUsage</strong>.</li>
+</ul>
+</li>
+<li>Important: A failure <strong>persists</strong> until an ensuing set overwrites it—this enables overlapping, time-boxed failure compositions.</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &quot;failures&quot;: [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &quot;name&quot;: &quot;catalog&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &quot;pubSubDeterioration&quot;: null,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &quot;serviceInvocationDeterioration&quot;: [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          { &quot;path&quot;: &quot;/&quot;, &quot;delay&quot;: 1000, &quot;delayProbability&quot;: 1, &quot;errorProbability&quot;: 1, &quot;errorCode&quot;: 404 }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        ],</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &quot;artificialMemoryUsage&quot;: null,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &quot;artificialCPUUsage&quot;: null</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    ],</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &quot;pauses&quot;: { &quot;before&quot;: 10, &quot;after&quot;: 5 }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  },</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &quot;failures&quot;: [{ &quot;name&quot;: &quot;catalog&quot;, &quot;serviceInvocationDeterioration&quot;: null }],</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &quot;pauses&quot;: { &quot;before&quot;: 0, &quot;after&quot;: 0 }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">]</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="define-experiment-goals">Define Experiment Goals<a href="#define-experiment-goals" class="hash-link" aria-label="Direct link to Define Experiment Goals" title="Direct link to Define Experiment Goals">​</a></h2>
+<p>You can set goals manually or automatically.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="manual-goals">Manual Goals<a href="#manual-goals" class="hash-link" aria-label="Direct link to Manual Goals" title="Direct link to Manual Goals">​</a></h3>
+<ul>
+<li>For each goal, specify:<!-- -->
+<ul>
+<li><strong>Metric</strong> (dropdown),</li>
+<li><strong>Threshold</strong> (number),</li>
+<li><strong>Highlight color</strong> for violations in dashboards.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="automated-goal-definition">Automated Goal Definition<a href="#automated-goal-definition" class="hash-link" aria-label="Direct link to Automated Goal Definition" title="Direct link to Automated Goal Definition">​</a></h3>
+<ul>
+<li>Provide:<!-- -->
+<ul>
+<li>Duration of the steady-state measurement,</li>
+<li>Static users during measurement,</li>
+<li>Factor applied to measured metrics to derive thresholds (e.g., mean response time 1000 ms × 1.5 → threshold 1500 ms).</li>
+</ul>
+</li>
+</ul>
+<p>Replace with your auto-goal UI screenshot.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="visualize-with-the-experiment-graph">Visualize with the Experiment Graph<a href="#visualize-with-the-experiment-graph" class="hash-link" aria-label="Direct link to Visualize with the Experiment Graph" title="Direct link to Visualize with the Experiment Graph">​</a></h2>
+<p>The Experiment Graph shows:</p>
+<ul>
+<li><strong>Arriving users</strong> and <strong>approximate total requests</strong> over time per scenario.</li>
+<li>Vertical markers when Chaos Toolkit and MiSArch failures occur (sequential timing with configured pauses).</li>
+<li><strong>Buttons</strong> to switch to <strong>Load</strong> and <strong>Warm-Up</strong> views.<!-- -->
+<blockquote>
+<p>Note: Request/arrival estimates assume no delays/failures; actual execution may stretch scenarios when the system degrades. Use this graph to
+reason about when failures strike relative to load.</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="run-stop-save-and-version-experiments">Run, Stop, Save, and Version Experiments<a href="#run-stop-save-and-version-experiments" class="hash-link" aria-label="Direct link to Run, Stop, Save, and Version Experiments" title="Direct link to Run, Stop, Save, and Version Experiments">​</a></h2>
+<p>In the <strong>Header</strong>:</p>
+<ul>
+<li>Save pending changes.</li>
+<li>Delete the current experiment or version.</li>
+<li>Load an existing experiment or generate a new one.</li>
+<li>Create a new version (makes a copy to tweak safely).</li>
+<li>Execute or Stop the experiment.</li>
+<li>Access General Help and context help for each section.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="analyze-results-in-grafana-dashboards">Analyze Results in Grafana Dashboards<a href="#analyze-results-in-grafana-dashboards" class="hash-link" aria-label="Direct link to Analyze Results in Grafana Dashboards" title="Direct link to Analyze Results in Grafana Dashboards">​</a></h2>
+<p>After each run, a version-specific Grafana dashboard is created/updated. Features include:</p>
+<ul>
+<li>Run comparison: every metric appears twice—Now vs. N seconds ago—aligning the previous run’s start time to the latest run for apples-to-apples
+viewing.</li>
+<li>Sections:</li>
+</ul>
+<ol>
+<li>Gatling Total: active users per scenario; responses (success/failed); key stats (min/mean/max latency, throughput, request rate). Goal breaches
+are highlighted.</li>
+<li>Gatling Errors: concrete error breakdowns (timeouts, server errors, failed checks).</li>
+<li>Gatling Requests: per-request percentiles, throughput (RPS), success ratio—pinpoint bottlenecks.</li>
+<li>Service Metrics: CPU/memory and internal latencies per MiSArch service (from cAdvisor, Dapr, and service OpenTelemetry), selectable by component.</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="tips-constraints-and-gotchas">Tips, Constraints, and Gotchas<a href="#tips-constraints-and-gotchas" class="hash-link" aria-label="Direct link to Tips, Constraints, and Gotchas" title="Direct link to Tips, Constraints, and Gotchas">​</a></h2>
+<ul>
+<li>Work DSL: Only <strong>Gatling Kotlin DSL</strong> for scenarios.</li>
+<li><strong>Open load only</strong> for experiments (arrivals model).</li>
+<li><strong>Time unit</strong> for load durations is seconds.</li>
+<li><strong>Failure persistence:</strong> MiSArch failure settings persist until overwritten by a later failure set.</li>
+<li><strong>Chaos Toolkit extensions:</strong> Custom extensions not pre-installed on the Executor may be unavailable—prefer common, pre-installed ones.</li>
+<li><strong>Approximations:</strong> Graphed requests/arrivals are estimates—real runs with delays/failures will deviate.</li>
+<li><strong>Realistic pattern:</strong> For long runs, realistic load is sampled from a real 24-hour dataset subset and scaled by your configured max arrivals.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="storage-structure--files">Storage Structure &amp; Files<a href="#storage-structure--files" class="hash-link" aria-label="Direct link to Storage Structure &amp; Files" title="Direct link to Storage Structure &amp; Files">​</a></h2>
+<ul>
+<li>Experiments are stored by <strong>Test-UUID</strong> and <strong>Test-Version</strong>.</li>
+<li>Each experiment bundles:<!-- -->
+<ul>
+<li>Work scripts (Kotlin DSL),</li>
+<li>Per-scenario load configuration,</li>
+<li>Chaos Toolkit JSON,</li>
+<li>MiSArch Experiment Config JSON,</li>
+<li>General config JSON (goals, optional warm-up, Test-UUID/version).</li>
+</ul>
+</li>
+</ul></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/docs/user-manuals/how-to-use-frontend"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">How to Use the Frontend</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/category/development"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Development</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#where-to-find-the-misarch-experiment-tool-frontend" class="table-of-contents__link toc-highlight">Where to Find the MiSArch Experiment Tool Frontend</a></li><li><a href="#contents" class="table-of-contents__link toc-highlight">Contents</a></li><li><a href="#what-is-an-experiment" class="table-of-contents__link toc-highlight">What is an Experiment?</a></li><li><a href="#before-you-start-artifacts--concepts" class="table-of-contents__link toc-highlight">Before You Start (Artifacts &amp; Concepts)</a></li><li><a href="#create-or-load-an-experiment" class="table-of-contents__link toc-highlight">Create or Load an Experiment</a></li><li><a href="#tour-of-the-user-interface" class="table-of-contents__link toc-highlight">Tour of the User Interface</a></li><li><a href="#configure-work-gatling-kotlin-dsl" class="table-of-contents__link toc-highlight">Configure Work (Gatling Kotlin DSL)</a></li><li><a href="#configure-load-open-load-model" class="table-of-contents__link toc-highlight">Configure Load (Open-Load Model)</a></li><li><a href="#optional-configure-a-warm-up" class="table-of-contents__link toc-highlight">Optional: Configure a Warm-Up</a></li><li><a href="#configure-failures" class="table-of-contents__link toc-highlight">Configure Failures</a><ul><li><a href="#chaos-toolkit-failures" class="table-of-contents__link toc-highlight">Chaos Toolkit Failures</a></li><li><a href="#misarch-experiment-configuration-failures" class="table-of-contents__link toc-highlight">MiSArch Experiment Configuration Failures</a></li></ul></li><li><a href="#define-experiment-goals" class="table-of-contents__link toc-highlight">Define Experiment Goals</a><ul><li><a href="#manual-goals" class="table-of-contents__link toc-highlight">Manual Goals</a></li><li><a href="#automated-goal-definition" class="table-of-contents__link toc-highlight">Automated Goal Definition</a></li></ul></li><li><a href="#visualize-with-the-experiment-graph" class="table-of-contents__link toc-highlight">Visualize with the Experiment Graph</a></li><li><a href="#run-stop-save-and-version-experiments" class="table-of-contents__link toc-highlight">Run, Stop, Save, and Version Experiments</a></li><li><a href="#analyze-results-in-grafana-dashboards" class="table-of-contents__link toc-highlight">Analyze Results in Grafana Dashboards</a></li><li><a href="#tips-constraints-and-gotchas" class="table-of-contents__link toc-highlight">Tips, Constraints, and Gotchas</a></li><li><a href="#storage-structure--files" class="table-of-contents__link toc-highlight">Storage Structure &amp; Files</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 MiSArch contributors. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
